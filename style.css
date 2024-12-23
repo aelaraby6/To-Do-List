@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-color: rgb(27, 0, 68);
+    font-family: "Cairo", sans-serif;
+}
+
+.circularButton{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+}
+
+.main {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.to-do-list {
+    width: 650px;
+    height: 400px;
+    background-color: rgb(235, 241, 229);
+   
+}
+
+.header {
+    display: flex;
+    position: relative;
+    background-color:rgb(82, 46, 145);
+    height: 45px;
+}
+
+.header p {
+    position: absolute;
+    left: 310px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.header button {
+    position: absolute;
+    left: 620px;
+    top: 10px;
+    background-color: white;
+}
+.header button i{
+    font-size: 12px;
+}
+
+#tasks .task{
+    display: flex;
+    background-color: white;
+    margin: 7px;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    border-radius: 5px; 
+    
+}
+#tasks .task .taskinfo {
+    width: 70%;
+    font-weight: bold;
+}
+#tasks .task .taskinfo .date{
+    display: flex;
+    align-items: center;
+}
+
+#tasks .task .taskinfo .date i{
+   margin-right: 5px;
+   font-size: 15px;
+}
+
+.taskoperations{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.taskoperations button:nth-child(1){
+    background-color: rgb(102, 0, 3);
+    color: white;
+}
+.taskoperations button:nth-child(2){
+    background-color:rgb(78, 88, 206);
+    color: white;
+}
+.taskoperations button:nth-child(3){
+    background-color: rgb(186, 179, 179);
+    color: white;
+}
