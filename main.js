@@ -1,21 +1,20 @@
-let tasks = [
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [
     {
         "name": "task 1",
         "date": "1/5/2024",
-        "isdone": "false"
+        "isdone": false
     },
     {
         "name": "task 2",
         "date": "1/5/2024",
-        "isdone": "false"
+        "isdone": false
     },
     {
         "name": "task 3",
         "date": "1/5/2024",
-        "isdone": "false"
+        "isdone": false
     }
-]
-
+];
 
 // show tasks
 function showcContent() {
@@ -39,7 +38,7 @@ function showcContent() {
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
                     <button  onclick = "setStatus(${index})" class="circularButton">
-                        <i class="fa-solid fa-check"></i>
+                       <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
             </div>`;
@@ -59,6 +58,7 @@ function haederbuttn() {
     };
 
     tasks.push(text);
+    storeTasks()
     showcContent();
 
 }
@@ -67,6 +67,7 @@ function haederbuttn() {
 // delete task
 function deletetask(index) {
     tasks.splice(index, 1);
+    storeTasks()
     showcContent();
 }
 
@@ -82,21 +83,28 @@ function updateTask(index) {
 function setStatus(index) {
     let taskElements = document.querySelectorAll("#tasks .task");
     let task = tasks[index];
-    task.isdone = true;
-    if (taskElements.length <= index) {
-        console.error("Invalid index: No task found at index", index);
-        return;
-    }
-
     let taskElement = taskElements[index];
     let statusButton = taskElement.querySelector(".taskoperations button:nth-child(3)");
-    
-    if (!statusButton) {
-        console.error("No button found at the specified position.");
+    if (task.isdone == true) {
+        statusButton.style.backgroundColor = "rgb(102, 0, 3)";
+        taskElement.style.backgroundColor = "white";
+        taskElement.querySelector(".taskoperations button:nth-child(3)").innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+        task.isdone = false;
         return;
     }
+    else {
+        task.isdone = true;
+        statusButton.style.backgroundColor = "green";
+        taskElement.style.backgroundColor = "rgb(158, 253, 160)";
+        taskElement.querySelector(".taskoperations button:nth-child(3)").innerHTML = `<i class="fa-solid fa-check"></i>`;
+    }
 
-    statusButton.style.backgroundColor = "green";
+}
+
+
+function storeTasks(){
+    let taskString = JSON.stringify(tasks);
+    localStorage.setItem("tasks",taskString);
 }
 
 showcContent();
